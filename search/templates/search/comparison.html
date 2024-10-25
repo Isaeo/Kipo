@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+  <head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <script defer src="{% static 'script.js' %}"></script>
+    <title>Kipo AI</title>
+  </head>
+  <body>
+    <div class="topnav">
+      <a href="{% url 'substitute' %}">Find Substitute</a>
+      <a href="{% url 'comparison' %}">Compare Parts</a>
+    </div>
+    <h1>Compare Parts</h1>
+    <div class="scroll-table-container">
+      <table class="scroll-table">
+        <thead>
+          <tr>
+            {% for column in parts.0.keys %} <!-- Access keys of the first row for column headers -->
+              <th>{{ column }}</th>
+            {% endfor %}
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in parts %}
+            <tr>
+              {% for value in row.values %} <!-- Loop through values for each row -->
+                <td>{{ value }}</td>
+              {% endfor %}
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

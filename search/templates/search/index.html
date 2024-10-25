@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+  <head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <script defer src="{% static 'script.js' %}"></script>
+    <title>Kipo AI</title>
+  </head>
+  <body>
+    <div class="topnav">
+      <a href="{% url 'substitute' %}">Find Substitute</a>
+      <a href="{% url 'comparison' %}">Compare Parts</a>
+    </div>
+    <h1>Sample Homepage</h1>
+  </body>
+</html>
+

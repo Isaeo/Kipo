@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+  <head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <script defer src="{% static 'script.js' %}"></script>
+    <title>Kipo AI</title>
+  </head>
+  <body>
+    <div class="topnav">
+        <a class="active" href="{% url 'substitute' %}">Find Substitute</a>
+        <a href="{% url 'comparison' %}">Compare Parts</a>
+    </div>
+    <h1>Find Substitute</h1>
+    <form method="POST" action="{% url 'substitute' %}" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="search-bar">
+    <label for="search-bar">What kind of part do you need?</label>
+    <input type="search" name="query" id="query" placeholder="Search...">
+  </div>
+  <button id="substitute" class="btn btn-primary">Find Substitute</button>
+    </form>
+
+  {% if data %}
+    <table class="center">
+      <thead>
+        <tr>
+          <th>MPN</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in data %}
+          <tr>
+            <td class='mpn'>{{ item.mpn }}</td>
+            <td>{{ item.description }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% endif %}
+
+  </body>
+</html>
