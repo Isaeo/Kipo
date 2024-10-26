@@ -6,6 +6,8 @@ from openai import OpenAI
 import environ
 from pathlib import Path
 import os
+
+#Initialise OpenAI Client using API Key from .env
 env = environ.Env()
 BASE_DIR = Path(__file__).resolve().parent.parent
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
